@@ -20,11 +20,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.grey[300],
         body: SafeArea(
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 //logo
                 const Icon(
@@ -89,33 +90,36 @@ class MyApp extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  child: Stack(
                     children: [
-                      Expanded(
-                        child: Divider(
-                          thickness: 8.5,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Text(
-                          "Or continue with",
-                          style: TextStyle(
-                            color: Colors.grey[700],
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Divider(
+                              thickness: 8,
+                              color: Colors.grey[400],
+                            ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Expanded(
-                          child: Divider(
-                            thickness: 8.5,
-                            color: Colors.grey[400],
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Text(
+                              "Or continue with",
+                              style: TextStyle(
+                                color: Colors.grey[700],
+                                fontSize: 15,
+                              ),
+                            ),
                           ),
-                        ),
-                      )
+                          Expanded(
+                            child: Divider(
+                              thickness: 8.5,
+                              color: Colors.grey[400],
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
