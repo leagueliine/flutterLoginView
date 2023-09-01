@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
               children: [
                 //logo
                 const Icon(
-                  Icons.lock,
+                  Icons.account_circle_rounded,
                   size: 100,
                 ),
                 const SizedBox(
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
                 ),
 
                 Text(
-                  "Welcome back, Happy hacking!",
+                  "Welcome back!",
                   style: TextStyle(color: Colors.grey[700], fontSize: 16),
                 ),
                 //welcome back, happt hacking
@@ -72,7 +72,9 @@ class MyApp extends StatelessWidget {
                     children: [
                       Text(
                         "Forgot password ?",
-                        style: TextStyle(color: Colors.grey[600]),
+                        style: TextStyle(
+                          color: Colors.grey[600],
+                        ),
                       ),
                     ],
                   ),
@@ -143,27 +145,30 @@ class MyApp extends StatelessWidget {
                 const SizedBox(
                   height: 50,
                 ),
-                //apple sign button
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Not a Member ?",
-                      style: TextStyle(
-                        color: Colors.grey[700],
+                //
+                Container(
+                  margin: const EdgeInsets.only(bottom: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Not a Member ?",
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    const Text(
-                      "Register Now",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
+                      const SizedBox(
+                        width: 4,
                       ),
-                    ),
-                  ],
+                      const Text(
+                        "Register Now",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 //not a member? register now!
               ],
