@@ -4,16 +4,25 @@ import 'package:my_test_app/login/square_tile.dart';
 import 'package:my_test_app/login/text_field.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const TestFormFLutter());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+class TestFormFLutter extends StatefulWidget {
+  const TestFormFLutter({Key? key}) : super(key: key);
 
+  @override
+  State<TestFormFLutter> createState() => _TestFormFLutterState();
+}
+
+class _TestFormFLutterState extends State<TestFormFLutter> {
   final nameController = TextEditingController();
   final passController = TextEditingController();
 
-  void signUserIn() {}
+  late bool _showPass = false;
+
+  void signUserIn() {
+    print({"name": nameController.text, "password": passController.text});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.grey[300],
+        backgroundColor: Colors.grey[400],
         body: SafeArea(
           child: Center(
             child: Column(
@@ -56,10 +65,35 @@ class MyApp extends StatelessWidget {
                   height: 25,
                 ),
 
-                TextFieldUI(
-                  controller: passController,
-                  hintText: "Password",
-                  obscureText: true,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: TextField(
+                    controller: passController,
+                    obscureText: _showPass ? true : false,
+                    decoration: InputDecoration(
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blueAccent),
+                      ),
+                      fillColor: Colors.grey.shade200,
+                      filled: true,
+                      hintText: "Password",
+                      suffixIcon: GestureDetector(
+                          child: Icon(
+                            _showPass == false
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: Colors.grey[400],
+                          ),
+                          onTap: () {
+                            setState(() {
+                              _showPass = !_showPass;
+                            });
+                          }),
+                    ),
+                  ),
                 ),
                 //forgot password
                 const SizedBox(
